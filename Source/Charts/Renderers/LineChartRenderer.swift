@@ -327,7 +327,8 @@ open class LineChartRenderer: LineRadarRenderer
             var e: ChartDataEntry! = dataSet.entryForIndex(j)
             
             if e == nil { continue }
-            
+            if e.isLineHidden { continue }
+
             _lineSegments[0].x = CGFloat(e.x)
             _lineSegments[0].y = CGFloat(e.y * phaseY)
             
@@ -336,7 +337,8 @@ open class LineChartRenderer: LineRadarRenderer
                 e = dataSet.entryForIndex(j + 1)
                 
                 if e == nil { break }
-                
+                if e.isLineHidden { break }
+
                 if isDrawSteppedEnabled
                 {
                     _lineSegments[1] = CGPoint(x: CGFloat(e.x), y: _lineSegments[0].y)
@@ -592,6 +594,7 @@ open class LineChartRenderer: LineRadarRenderer
             for j in _xBounds
             {
                 guard let e = dataSet.entryForIndex(j) else { break }
+                guard  e.isCircleHidden == false else { continue }
 
                 pt.x = CGFloat(e.x)
                 pt.y = CGFloat(e.y * phaseY)

@@ -15,7 +15,13 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
 {
     /// the x value
     @objc open var x = Double(0.0)
-    
+
+    // Circle is hidden.
+    @objc open var isCircleHidden = false
+
+    // Line is hidden.
+    @objc open var isLineHidden = false
+
     public required init()
     {
         super.init()
