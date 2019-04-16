@@ -16,6 +16,12 @@ open class ChartDataEntry: ChartDataEntryBase
     /// the x value
     @objc open var x = Double(0.0)
     
+    // Circle is hidden.
+    @objc open var isCircleHidden = false
+
+    // Line is hidden.
+    @objc open var isLineHidden = false
+
     public required init()
     {
         super.init()
@@ -74,7 +80,7 @@ open class ChartDataEntry: ChartDataEntryBase
     
     open override var description: String
     {
-        return "ChartDataEntry, x: \(x), y \(y)"
+        return "ChartDataEntry, x: \(x), y: \(y), isCircleHidden: \(isCircleHidden), isLineHidden: \(isLineHidden)"
     }
     
     // MARK: NSCopying

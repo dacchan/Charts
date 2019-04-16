@@ -397,7 +397,8 @@ open class LineChartRenderer: LineRadarRenderer
                     e2 = dataSet.entryForIndex(x)
                     
                     if e1 == nil || e2 == nil { continue }
-                    
+                    if e1.isLineHidden || e2.isLineHidden { continue }
+
                     let pt = CGPoint(
                         x: CGFloat(e1.x),
                         y: CGFloat(e1.y * phaseY)
@@ -652,6 +653,7 @@ open class LineChartRenderer: LineRadarRenderer
             for j in stride(from: _xBounds.min, through: _xBounds.range + _xBounds.min, by: 1)
             {
                 guard let e = dataSet.entryForIndex(j) else { break }
+                guard  e.isCircleHidden == false else { continue }
 
                 pt.x = CGFloat(e.x)
                 pt.y = CGFloat(e.y * phaseY)
