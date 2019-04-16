@@ -219,7 +219,8 @@ open class CombinedChartView: BarLineChartViewBase, CombinedChartDataProvider
             
             guard 
                 let set = combinedData?.getDataSetByHighlight(highlight),
-                let e = _data?.entryForHighlight(highlight)
+                let e = _data?.entryForHighlight(highlight),
+                !e.isCircleHidden
                 else { continue }
             
             let entryIndex = set.entryIndex(entry: e)
